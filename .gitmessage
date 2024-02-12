@@ -1,0 +1,83 @@
+<type>(<scope>): <[ID-JIRA]> <subject>
+<BLANK LINE>
+<body>
+<BLANK LINE>
+<footer>
+
+#
+#
+# Type
+# ====
+#
+# * feature
+# * bugfix
+# * refactor
+# * test
+# * tooling
+# * technical
+# * documentation
+# * style
+#
+#
+# Scope
+# =====
+#
+# Exemples : all, frontend, python, database, docker, terraform, ansible
+#
+# ID-JIRA
+# =======
+#
+# Si le commit est lie a un ticket JIRA. Exemples : UGC-599, DEVOPS-345, CVE-578
+#
+#
+# Subject
+# =======
+#
+# Le sujet est une description succincte du changement:
+#
+# * optionnel
+# * en Francais
+# * emploi de l'imperatif present au 2eme personne du singulier (e.g. change, ajoute, supprime)
+# * pas de majuscule pour la premiere lettre
+# * pas de poitn (.) a la fin
+#
+#
+# Body
+# ====
+#
+# Inclus les motivations pour le changement et la difference par rapport a l'etat precedent:
+#
+# * optionnel
+# * en Francais
+# * emploi de l'imperatif present au 2eme personne du singulier (e.g. change, ajoute, supprime)
+# * Avec une ponctuation correcte
+#
+#
+# Footer
+# ======
+#
+# Contient des informations supplemetaires. Chaque type d'information doit etre sur une nouvelle ligne qui commence par le type d'information en majuscule (e.g. JIRA: , RUPTURE:, BINOME:) suivie par deux points (:) :
+# * optionnel
+# * en Francais
+# * emploi de l'imperatif present au 2eme personne du singulier (e.g. change, ajoute, supprime)
+# * pas de poitn (.) a la fin
+#
+#
+# Exemple
+# =======
+#
+# feature(appro): [DEVOPS-434] ajoute le container traefik
+#
+# On ajoute le container Traefik sur le server XXX afin de permettre l'utilisation de HTTP et HTTPS.
+#
+# BINOME: FBA
+#
+#
+# Blank Line HowTo
+# ================
+#
+# * Plusieurs -m
+#
+# $ git commit -m "feature(docker): [DEVOPS-434] ajoute le container traefik" -m "On ajoute le container Traefik sur le server XXX afin de permettre l'utilisation de HTTP et HTTPS." -m "JIRA: DEVOPS-434"
+#
+# * Option commit -e qui ouvre un editeur pour taper le message
