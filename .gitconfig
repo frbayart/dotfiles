@@ -1,25 +1,19 @@
 [core]
 	editor = vim
 	whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
-	excludesfile = /Users/frbayart/.gitignore_global
+	excludesfile = ~/.gitignore_global
 #	pager = delta
 
 [user]
 	name = Francois Bayart
 	email = francois@famipow.com
 	# 1Password
-	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICGYZk7n37mUAOo3aIvORo8JVoNoD87tzGsSIL1HB6Ep
+	# signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICGYZk7n37mUAOo3aIvORo8JVoNoD87tzGsSIL1HB6Ep
+	signingkey = ~/.ssh/keys/perso/github_signing_id_ed25519.pub
 
-	#2021 	signingkey = 7D163F282A8E1719
+	# 2021 	signingkey = 7D163F282A8E1719
 	# 2020 signingkey = ADE28D6A78B0DC88
 	# signingkey = 7CC11D1D6505B57D
-
-
-[gpg]
-  format = ssh
-
-[gpg "ssh"]
-  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
 
 
 [color]
@@ -42,35 +36,42 @@
 	untracked = red bold
 
 [gui]
-  encoding = utf-8
+	encoding = utf-8
 
 [alias]
-	st=status
-	co=checkout
+	st = status
+	co = checkout
 	copr = !sh -c 'git fetch origin pull/$1/head:pr-$1 && git co pr-$1'
 	cotag = !sh -c 'git checkout tags/$1 -b $1'
-	ci=commit
-  # Handfull shortcuts
-    ck = checkout
-    m = checkout main
-    d = checkout develop
+	ci = commit
+	# Handfull shortcuts
+	ck = checkout
+	m = checkout main
+	d = checkout develop
 
-  # Prune aliases
-    # Prune Tags - Prune local Git tags that doesn't exist on remote 'origin'
-    p-tags=!git fetch --prune origin '+refs/tags/*:refs/tags/*'
-    # Prune Branches remote branchs and remove the local ones that as gonne on the remote
-    # See https://stackoverflow.com/a/33548037/2397394
-    p-branch="!gitPruneBranch() { git fetch --prune && for branch in `git branch -vv | grep ': gone]' | awk '{print $1}'`; do git branch -D $branch; done }; gitPruneBranch"
-    # Alinas for prune all branches and tags
-    p-all=!git p-branch && git p-tags
-    # Remove local sh*t
-    p-fuck="!git clean -f -x -d"
-    # A shortcut for the the command 'p-all'
-    pow=!git p-all
+	# Prune aliases
+	# Prune Tags - Prune local Git tags that doesn't exist on remote 'origin'
+	p-tags = !git fetch --prune origin '+refs/tags/*:refs/tags/*'
+	# Prune Branches remote branchs and remove the local ones that as gonne on the remote
+	# See https://stackoverflow.com/a/33548037/2397394
+	p-branch = "!gitPruneBranch() { git fetch --prune && for branch in `git branch -vv | grep ': gone]' | awk '{print $1}'`; do git branch -D $branch; done }; gitPruneBranch"
+	# Alias for prune all branches and tags
+	p-all = !git p-branch && git p-tags
+	# Remove local sh*t
+	p-fuck = "!git clean -f -x -d"
+	# A shortcut for the command 'p-all'
+	pow = !git p-all
 
 [commit]
-	gpgsign = true
-	template = /Users/frbayart/.gitmessage
+	# gpgsign = true
+	template = ~/.gitmessage
+
+# [gpg]
+# 	format = ssh
+
+# [gpg "ssh"]
+# 	program = "ssh -i /home/frbayart/.ssh/keys/perso/github_signing_id_ed25519"
+# 	allowedSignersFile = ~/.config/git/allowed_signers
 
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
@@ -78,11 +79,11 @@
 	required = true
 	clean = git-lfs clean -- %f
 
-
 [url "git@github.com:"]
 	insteadOf = https://github.com/
 
 [remote "origin"]
 	tagopt = --tags
+
 [init]
 	defaultBranch = main
